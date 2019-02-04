@@ -1,12 +1,29 @@
 extends Node2D
 
 var player_words = []
-var prompt = ["a name", "a thing", "a feeling", "feeling", "feeling"]
-var story = "Once upon a time a %s ate a %s  and felt very %s. %s %s"
+var template = [
+{
+	"prompt": ["a name", "a thing", "a feeling", "feeling", "feeling"],
+	"story": "Once upon a time a %s ate a %s  and felt very %s. %s %s"
+},
+{
+	"prompt": ["a name", "a thing", "a feeling", "feeling", "feeling"],
+	"story": "Story 2 Once upon a time a %s ate a %s  and felt very %s. %s %s"
+},
+{
+	"prompt": ["a name", "a thing", "a feeling", "feeling", "feeling"],
+	"story": "Story 3 Once upon a time a %s ate a %s  and felt very %s. %s %s"
+},
+]
+var current_story
 
 func _ready():
-	$Blackboard/StoryText.text = "welcome, \n Can I have " + prompt[player_words.size()] + ", please?"
+	randomize()
+	current_story = template[randi() % template.size()]
+	$Blackboard/StoryText.text = "welcome, \n Can I have " + current_story.prompt[player_words.size()] + ", please?"
 	$Blackboard/TextBox.text = ""
+	$Blackboard/TextBox.grab_focus()
+	
 
 func _on_TextureButton_pressed():
 	if is_story_done():
@@ -22,10 +39,10 @@ func _on_TextBox_text_entered(new_text):
 	check_player_word_length()
 	
 func is_story_done():
-	return player_words.size() == prompt.size()
+	return player_words.size() == current_story.prompt.size()
 	
 func prompt_player():
-	$Blackboard/StoryText.text = ("Can I have " + prompt[player_words.size()] + ", please?")
+	$Blackboard/StoryText.text = ("Can I have " + current_story.prompt[player_words.size()] + ", please?")
 
 func check_player_word_length():
 	if is_story_done():
@@ -34,7 +51,7 @@ func check_player_word_length():
 		prompt_player()
 
 func tell_story():
-	$Blackboard/StoryText.text = (story % player_words)
+	$Blackboard/StoryText.text = (current_story.story % player_words)
 	$Blackboard/TextureButton/ButtonLabel.text = "again"
 	end_game()
 	

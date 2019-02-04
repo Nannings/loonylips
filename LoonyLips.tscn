@@ -91,7 +91,6 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [node name="TextureButton" type="TextureButton" parent="Blackboard" index="2"]
 
