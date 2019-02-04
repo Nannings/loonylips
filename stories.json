@@ -1,0 +1,16 @@
+
+  [
+    {
+      "prompt": [ "a name", "a thing", "a feeling", "feeling", "feeling" ],
+      "story": "Once upon a time a %s ate a %s  and felt very %s. %s %s"
+    },
+    {
+      "prompt": [ "a name", "a thing", "a feeling", "feeling", "feeling" ],
+      "story": "Story 2 Once upon a time a %s ate a %s  and felt very %s. %s %s"
+    },
+    {
+      "prompt": [ "a name", "a thing", "a feeling", "feeling", "feeling" ],
+      "story": "Story 3 Once upon a time a %s ate a %s  and felt very %s. %s %s"
+    }
+  ]
+
